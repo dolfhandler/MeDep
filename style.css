@@ -1,0 +1,17 @@
+.carousel-image-1,
+.carousel-image-2,
+.carousel-image-3 {
+    height: 440px;
+}
+
+.carousel-image-1 {
+    background: url('image/carousel/carousel-1.jpg') no-repeat center center/cover;
+}
+
+.carousel-image-2 {
+    background: url('image/carousel/carousel-2.jpg') no-repeat center center/cover;
+}
+
+.carousel-image-3 {
+    background: url('image/carousel/carousel-3.jpg') no-repeat center center/cover;
+}
