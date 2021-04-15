@@ -1,7 +1,7 @@
 .carousel-image-1,
 .carousel-image-2,
 .carousel-image-3 {
-    height: 440px;
+    height: 500px;
 }
 
 .carousel-image-1 {
@@ -14,4 +14,21 @@
 
 .carousel-image-3 {
     background: url('image/carousel/carousel-3.jpg') no-repeat center center/cover;
+}
+
+.carouselSelector {
+    cursor: pointer;
+}
+
+.btnTop {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity .3;
+}
+
+.btnTop:hover {
+    opacity: 1;
 }
