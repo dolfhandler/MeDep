@@ -1,3 +1,7 @@
+.nav-link {
+    cursor: pointer;
+}
+
 .carousel-image-1,
 .carousel-image-2,
 .carousel-image-3 {
@@ -109,3 +113,15 @@
 
 
 /* services */
+
+
+/* spinner */
+
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+}
+
+
+/* spinner */
