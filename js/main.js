@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    $('[data-toggle="tooltip"]').tooltip();
+
     $('.carousel').carousel({
         interval: 6000,
         keyboard: true,
@@ -12,12 +14,7 @@ $(document).ready(function() {
 });
 
 function handlerClickNavItem(e) {
-    e.preventDefault();
     $('.nav-link').removeClass('active');
     $(this).addClass('active');
     const section = $(this).attr('href');
-
-    $('html, body').animate({
-        scrollTop: $(`${section}`).offset().top
-    }, 1000);
 }
