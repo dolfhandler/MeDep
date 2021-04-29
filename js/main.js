@@ -3,8 +3,17 @@ $(document).ready(function() {
     // $('[data-toggle="tooltip"]').tooltip();
 
     $(document).on('click', '.nav-link', handlerClickNavItem);
+    $(document).on('click', '#aceptConsent', handleClickAceptConsent);
 
 });
+
+function handleClickAceptConsent() {
+    if ($(this).prop('checked')) {
+        $('#btnSendMessage').removeAttr('disabled');
+    } else {
+        $('#btnSendMessage').attr('disabled', '');
+    }
+}
 
 function handlerClickNavItem() {
     let contentSpace = $('#contentSpace');
