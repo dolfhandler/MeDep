@@ -12,6 +12,9 @@ function handlerClickNavItem() {
     let optionMenu = $(this);
 
     if (section.toLowerCase() === 'inicio') {
+        $('.nav-link').removeClass('active');
+        $('#homePage').addClass('active');
+
         contentSpace.html('');
         $('#carouselExampleIndicators').show();
         return;
