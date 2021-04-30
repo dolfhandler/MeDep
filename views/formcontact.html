@@ -54,9 +54,6 @@
                 </p>
             </div>
             <div class="mb-3 form-group col-sm-12">
-
-            </div>
-            <div class="mb-3 form-group col-sm-12 text-right">
                 <button type="submit" class="btn btn-primary" id="btnSendMessage" disabled>Enviar</button>
             </div>
         </form>
@@ -77,8 +74,6 @@
             const name = document.getElementById('name');
             const email = document.getElementById('email');
             const message = document.getElementById('message');
-            // console.log(name, email, message);
-            // return;
 
             if (name.value.trim().length === 0) {
                 swal("Alerta!", "Debe especificar un nombre", "info");
