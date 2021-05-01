@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Instafeed on Your Website</title>
-	<style type="text/css">
-		a img{ 
-			width: 25%;
-		}
-	</style>
+    <title>Instafeed on Your Website</title>
+    <style type="text/css">
+        a img {
+            width: 25%;
+        }
+    </style>
 </head>
+
 <body>
-	<h1 style="text-align: center">Show Instagram Feed on your Website</h1>
-    	<div id="instafeed-container">
-    		
-    	</div>
+    <h1 style="text-align: center">Show Instagram Feed on your Website</h1>
+    <div id="instafeed-container">
+
+    </div>
 
 
 
-	<script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
-	<script type="text/javascript">
-	var userFeed = new Instafeed({
-		get: 'user',
-		target: "instafeed-container",
-    	resolution: 'low_resolution',
-		accessToken: 'IGQVJYam1nSVBSYURQZAmdERnJlT0E5bzBnc0VEWE45SEVBWWt0aXV6dmVreXdHcEp6MWJhamp3VVRQUjhBcjRMVnUzZAG01VkRHTGNlaDB5LTUxVU9xYnZAZAYVEtR2xVWWJ1c1hnbkU2UUtGdG11eTdNegZDZD'
-	});
-	userFeed.run();
-	</script>
+    <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <script type="text/javascript">
+        const access_token = 'IGQVJYcjlFTWY5N3ZAFRzZAfU1d4dmluUTc4a295Ml9sOWw4VzgxbFk1ZAFNsZAHRLOGhjZAUFJa0RLV2g1bFVKd2tVRGFBVkpqY1FMRkNEeHpDNzNpdWUwakxVNmhaT2c1V1dOSERicDJqbDVtM2FVSlJMLQZDZD';
+        const request_uri = `https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${access_token}`;
+        var userFeed = '';
+
+        $.ajax({
+            type: 'GET',
+            url: request_uri,
+            success: function(data) {
+                userFeed = new Instafeed({
+                    get: 'user',
+                    target: "instafeed-container",
+                    resolution: 'low_resolution',
+                    accessToken: access_token
+                });
+                userFeed.run();
+            }
+        });
+    </script>
 </body>
+
 </html>
