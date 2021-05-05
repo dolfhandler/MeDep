@@ -3,6 +3,8 @@
 
 <head>
     <title>Instafeed on Your Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <style type="text/css">
         a img {
             width: 25%;
@@ -12,33 +14,63 @@
 
 <body>
     <h1 style="text-align: center">Show Instagram Feed on your Website</h1>
-    <div id="instafeed-container">
 
-    </div>
+    <section id="hero">
+        <div class="hero-container">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+                <div id="instafeed-container" class="carousel-inner" role="listbox">
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 
 
     <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
     <script type="text/javascript">
         const access_token = 'IGQVJYcjlFTWY5N3ZAFRzZAfU1d4dmluUTc4a295Ml9sOWw4VzgxbFk1ZAFNsZAHRLOGhjZAUFJa0RLV2g1bFVKd2tVRGFBVkpqY1FMRkNEeHpDNzNpdWUwakxVNmhaT2c1V1dOSERicDJqbDVtM2FVSlJMLQZDZD';
         const request_uri = `https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${access_token}`;
         var userFeed = '';
+        const userID = '18612288899';
+        let flag = 0;
 
-        $.ajax({
-            type: 'GET',
-            url: request_uri,
-            success: function(data) {
-                userFeed = new Instafeed({
-                    get: 'user',
-                    target: "instafeed-container",
-                    resolution: 'low_resolution',
-                    accessToken: access_token
-                });
-                userFeed.run();
-            }
+        userFeed = new Instafeed({
+            get: 'user',
+            target: "instafeed-container",
+            resolution: 'low_resolution',
+            accessToken: access_token,
+            template: `<div class="carousel-item" style="background-image: url({{image}});"></div>`,
+            // render: paint
         });
+        userFeed.run();
+
+        // $.ajax({
+        //     type: 'GET',
+        //     url: request_uri,
+        //     success: function(data) {
+        //         userFeed = new Instafeed({
+        //             get: 'user',
+        //             target: "instafeed-container",
+        //             resolution: 'low_resolution',
+        //             accessToken: access_token,
+        //             template: `<div class="carousel-item" style="background-image: url({{image}});"></div>`,
+        //             // render: paint
+        //         });
+        //         userFeed.run();
+        //     }
+        // });
+
+        // function paint() {
+        //     console.log('paint');
+        // }
     </script>
 </body>
 

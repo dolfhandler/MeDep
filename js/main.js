@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    // $('[data-toggle="tooltip"]').tooltip();
-
     $(document).on('click', '.nav-link', handlerClickNavItem);
     $(document).on('click', '#aceptConsent', handleClickAceptConsent);
 
