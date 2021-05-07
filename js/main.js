@@ -5,9 +5,11 @@ $(document).ready(function() {
 
     $(document).on('click', '.nav-link', handlerClickNavItem);
     $(document).on('click', '#aceptConsent', handleClickAceptConsent);
-    $(document).on('click', '.btnViewMore', handlerClickViewMore);
     loadBlogFile();
+
 });
+
+
 
 function handleClickAceptConsent() {
     if ($(this).prop('checked')) {
@@ -55,18 +57,10 @@ function handlerClickNavItem() {
                 optionMenu.addClass('active');
 
                 $('#loading').hide();
+                initializeTooltipServiceView();
             }
         });
     }
-}
-
-function handlerClickViewMore() {
-    const completeText = $(this).attr('completeText');
-    const modalTitle = $(this).attr('modalTitle');
-
-    $('.modal-content-text').html(completeText);
-    $('.modal-title').html(modalTitle);
-    $('.modal').modal('show');
 }
 
 async function writeBlogFile() {
@@ -97,5 +91,30 @@ function builtBlogHTML(_blog, container) {
 
         }
     }
+
+}
+
+function initializeTooltipServiceView() {
+    const elements = $('[id^="element"]').find('p>a');
+    console.log('elements:', elements);
+
+    for (const elem of elements) {
+        const title = $(elem).attr('modalTitle');
+        const body = $(elem).attr('completeText');
+        const card = $(elem).parent().parent();
+        const cardID = `#${$(card).attr('id')}`;
+
+        console.log('card:', cardID);
+
+        tippy(cardID, {
+            maxWidth: 500,
+            hideOnClick: true,
+            delay: 100,
+            allowHTML: true,
+            animation: 'scale',
+            content: `<h4>${title}</h4> ${body}`,
+        });
+    }
+
 
 }
