@@ -56,13 +56,28 @@
             height: 100%;
             object-fit: cover;
         }
+        
+        .viewMore {
+            border-top-left-radius: 5px;
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            background-color: #555;
+            padding: 5px 10px;
+            color: white;
+            text-decoration: none;
+            opacity: 0.4;
+            transition: opacity 1s;
+        }
+        
+        .viewMore:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center">Show Instagram Feed on your Website</h1>
-
-    <div class="swiper-container mySwiper" style="width: 300px; height: 240px;">
+    <div class="swiper-container mySwiper" style="width: 500px; height: 440px;">
         <div class="swiper-wrapper" id="instafeed-container">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
@@ -81,29 +96,9 @@
         <div class="swiper-button-prev"></div>
     </div>
 
-    <!-- <section id="hero">
-        <div class="hero-container">
-            <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-
-                <div id="instafeed-container" class="carousel-inner" role="listbox">
-
-                </div>
-
-            </div>
-        </div>
-    </section> -->
-
-
-
     <script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
-
-
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
     <script>
         var swiper = new Swiper(".mySwiper", {
             navigation: {
@@ -111,10 +106,8 @@
                 prevEl: ".swiper-button-prev",
             },
         });
-    </script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
 
+        document.addEventListener('DOMContentLoaded', function() {
 
             const access_token = 'IGQVJYcjlFTWY5N3ZAFRzZAfU1d4dmluUTc4a295Ml9sOWw4VzgxbFk1ZAFNsZAHRLOGhjZAUFJa0RLV2g1bFVKd2tVRGFBVkpqY1FMRkNEeHpDNzNpdWUwakxVNmhaT2c1V1dOSERicDJqbDVtM2FVSlJMLQZDZD';
             const request_uri = `https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${access_token}`;
@@ -128,10 +121,13 @@
                 accessToken: access_token,
                 limit: 12,
                 template: `
-                    <a class="swiper-slide" href="{{link}}" 
-                        target="_blank" title="{{caption}}"
+                    <div class="swiper-slide"
                         style="background: url('{{image}}') no-repeat center center/cover;">
-                    </a>`
+                        <a href="{{link}}" class="viewMore"
+                            target="_blank" title="{{caption}}">
+                            Ver en istagram
+                        </a>
+                    </div>`
             });
             userFeed.run();
 
