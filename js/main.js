@@ -35,7 +35,8 @@ function handlerClickNavItem() {
         contentSpace.html('');
 
         for (let content of blog.content) {
-            builtBlogHTML(content.elements, contentSpace);
+            contentSpace.append(`<section id="${content.id}" style="padding: 5px; border: 1px solid #009900;"></section>`)
+            builtBlogHTML(content, contentSpace);
         }
 
 
@@ -81,19 +82,58 @@ async function loadBlogFile() {
 }
 
 function builtBlogHTML(_blog, container) {
+    const parentID = _blog.id;
+    console.log('parent: ', parentID);
     // console.log('_blog: ', _blog);
-    for (let content of _blog) {
-        console.log(content);
-        container.append(`<h1>${content.id}</h1>`);
+    for (let content of _blog.elements) {
+        console.log('elType: ', content.elType);
+        // container.append(`<h1>${content.id}</h1>`);
+
+        switch (content.elType) {
+            case 'column':
+                console.log('colum: ', content);
+                drawColum(content, container, parentID);
+                break;
+            case "widget":
+                console.log('widget: ', content);
+                drawWidget(content, container, parentID);
+                break;
+        }
 
         // console.log('content.elements: ', content.elements);
-        if (content.elements.elType !== 'widget') {
-            element += builtBlogHTML(content.elements, container);
-        } else {
-
+        // console.log('c: ', content.elements.lenght > 0);
+        if (content.elType !== "widget") {
+            console.log('sigue');
+            builtBlogHTML(content, container);
         }
     }
 
+}
+
+function drawColum(content, container, parentID) {
+    const parentElement = $(`#${parentID}`);
+    console.log('parentElement: ', $(parentElement));
+
+    $(parentElement).append(`<div id="${content.id}" style="padding: 5px; width: ${content.settings._column_size}%; border: 1px solid #900;"></div>`);
+    // container.append(parentElement);
+}
+
+function drawWidget(content, container, parentID) {
+    const parentElement = $(`#${parentID}`);
+    console.log('parentElement: ', $(parentElement));
+
+    switch (content.widgetType) {
+        case "text-editor":
+            console.log("text-editor: ", $(parentElement));
+            $(parentElement).append(`${content.settings.editor}`);
+            break;
+
+        default:
+            break;
+    }
+    // container.append(parentElement);
+
+    // container.append(`<div id="${content.id}" style="width: ${content.settings._column_size}%; border: 1px solid #900; height: 50px;"></div>`);
 }
 
 function initializeTooltipServiceView() {
