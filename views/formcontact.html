@@ -4,6 +4,12 @@
         Nuestros especialistas están esperando tu comunicación para brindarte la más completa asesoría. Para hablar con un profesional, diligencia el siguiente formulario de contacto
     </p>
 
+    <div class="mb-4">
+        <a href="https://wa.me/+573245898887" id="whatsapp" target="_blank">
+            <i class="fab fa-whatsapp fa-3x text-success"></i>
+        </a>
+    </div>
+
     <form id="Contact" action="https://formspree.io/f/xrgreedp" method="POST" class="form-row">
         <div class="mb-3 form-group col-sm-6">
             <label for="name" class="form-label">Nombre</label>
@@ -93,5 +99,14 @@
             swal("Error!", "Ocurrio un error enviando la informacion, por favor intentalo mas tarde.", "info");
         });
     }
-    form.addEventListener("submit", handleSubmit)
+    form.addEventListener("submit", handleSubmit);
+
+    tippy("#whatsapp", {
+        maxWidth: 500,
+        hideOnClick: true,
+        delay: 100,
+        allowHTML: true,
+        animation: 'scale',
+        content: `Contáctanos a través de WhatsApp`,
+    });
 </script>
