@@ -29,10 +29,10 @@ a {
 }
 
 .carousel-caption {
-    background-color: #ffffff;
+    background-color: #000000;
     opacity: 0.5;
     width: 100%;
-    color: black;
+    color: rgb(255, 255, 255);
     bottom: 0px;
     left: 0px;
     float: left;
@@ -186,6 +186,61 @@ a {
 /* spinner */
 
 
+/* overwrite bootstrap style */
+
+
+/* Este es para los elementos en general */
+
+.btn-primary {
+    color: #fff;
+    background-color: #66B9D6;
+    border-color: #66B9D6;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #1D97C3;
+    border-color: #1D97C3;
+}
+
+.btn-primary:disabled {
+    color: #fff;
+    background-color: #66B9D6;
+    border-color: #66B9D6;
+    opacity: .5;
+}
+
+.text-primary {
+    color: #999999 !important;
+}
+
+.container-contact {
+    background-color: #1D97C3;
+}
+
+.container-header {
+    -webkit-box-shadow: 0px 10px 12px -6px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 0px 10px 12px -6px rgba(0, 0, 0, 0.43);
+    box-shadow: 0px 10px 12px -6px rgba(0, 0, 0, 0.43);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #175E9F;
+    font-weight: normal;
+    /* --------------------------- */
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #175E9F;
+    animation-name: rubberBand !important;
+    /* -webkit-animation-name: rubberBand;
+    animation-name: rubberBand; */
+}
+
+
 /* animation rubberBand */
 
 @keyframes rubberBand {
@@ -212,10 +267,33 @@ a {
     }
 }
 
-.rubberBand {
-    -webkit-animation-name: rubberBand;
-    animation-name: rubberBand;
+
+/* animation rubberBand */
+
+h1 {
+    color: #175E9F;
 }
 
 
-/* animation rubberBand */
+/*  Este es para el elemento activo lo puedes omitir si asi deseas */
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: #175E9F;
+    font-weight: bold;
+}
+
+
+/* overwrite bootstrap style */
+
+
+/* @font-face {
+    font-family: "farro";
+    src: url("/fonts/Farro-Light.ttf");
+}
+
+body {
+    font-family: 'farro', Arial, script;
+    font-weight: normal;
+    font-style: normal;
+} */

@@ -32,6 +32,7 @@ function handlerClickNavItem() {
         $('#carouselExampleIndicators').show();
         return;
     } else if (section.toLowerCase() === 'blog') {
+        contentSpace.html('');
 
         for (let content of blog.content) {
             builtBlogHTML(content.elements, contentSpace);
@@ -58,6 +59,7 @@ function handlerClickNavItem() {
 
                 $('#loading').hide();
                 initializeTooltipServiceView();
+                initializeTooltipAboutView();
             }
         });
     }
@@ -96,7 +98,6 @@ function builtBlogHTML(_blog, container) {
 
 function initializeTooltipServiceView() {
     const elements = $('[id^="element"]').find('p>a');
-    console.log('elements:', elements);
 
     for (const elem of elements) {
         const title = $(elem).attr('modalTitle');
@@ -115,6 +116,25 @@ function initializeTooltipServiceView() {
             content: `<h4>${title}</h4> ${body}`,
         });
     }
+}
 
+function initializeTooltipAboutView() {
+    const elements = $('.offers');
 
+    for (const elem of elements) {
+        const title = $(elem).attr('modalTitle');
+        const body = $(elem).attr('completeText');
+        const cardID = `#${$(elem).attr('id')}`;
+
+        console.log('card:', cardID);
+
+        tippy(cardID, {
+            maxWidth: 500,
+            hideOnClick: true,
+            delay: 100,
+            allowHTML: true,
+            animation: 'scale',
+            content: `<h4>${title}</h4> ${body}`,
+        });
+    }
 }
