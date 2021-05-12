@@ -6,6 +6,9 @@ $(document).ready(function() {
     $(document).on('click', '.nav-link', handlerClickNavItem);
     $(document).on('click', '#aceptConsent', handleClickAceptConsent);
     loadBlogFile();
+    loadView({
+        section: 'inicio'
+    });
 
 });
 
@@ -20,18 +23,18 @@ function handleClickAceptConsent() {
 }
 
 function handlerClickNavItem() {
-    let contentSpace = $('#contentSpace');
     const section = $(this).attr('templatehtml');
-    let optionMenu = $(this);
+    loadView({
+        section: section,
+        element: $(this)
+    });
+}
 
-    if (section.toLowerCase() === 'inicio') {
-        $('.nav-link').removeClass('active');
-        $('#homePage').addClass('active');
+function loadView(options) {
+    let contentSpace = $('#contentSpace');
+    let contentHome = $('#contentHome');
 
-        contentSpace.html('');
-        $('#carouselExampleIndicators').show();
-        return;
-    } else if (section.toLowerCase() === 'blog') {
+    if (options.section.toLowerCase() === 'blog') {
         contentSpace.html('');
         contentSpace.addClass("mt-4");
 
@@ -41,24 +44,30 @@ function handlerClickNavItem() {
             builtBlogHTML(content);
         }
 
-
         $('#carouselExampleIndicators').hide();
         $('.nav-link').removeClass('active');
-        optionMenu.addClass('active');
+        options.element.addClass('active');
 
         $('#loading').hide();
     } else {
         $.ajax({
             type: 'GET',
-            url: `/views/${section.toLowerCase()}.html`,
+            url: `/views/${options.section.toLowerCase()}.html`,
             beforeSend: function() {
                 $('#loading').show();
             },
             success: function(data) {
-                $('#carouselExampleIndicators').hide();
-                contentSpace.html(data);
                 $('.nav-link').removeClass('active');
-                optionMenu.addClass('active');
+
+                if (options.section.toLowerCase() === "inicio") {
+                    contentSpace.html("");
+                    contentHome.html(data);
+                    $('#homePage').addClass('active');
+                } else {
+                    contentHome.html("");
+                    contentSpace.html(data);
+                    options.element.addClass('active');
+                }
 
                 $('#loading').hide();
                 initializeTooltipServiceView();
@@ -79,34 +88,25 @@ async function writeBlogFile() {
 
 async function loadBlogFile() {
     blog = await writeBlogFile();
-    console.log(blog);
 }
 
 function builtBlogHTML(_blog) {
     const parentID = _blog.id;
-    console.log('parent: ', parentID);
-    // console.log('_blog: ', _blog);
     for (let content of _blog.elements) {
-        console.log('elType: ', content.elType);
-        // container.append(`<h1>${content.id}</h1>`);
 
         switch (content.elType) {
             case 'column':
-                console.log('colum: ', content);
                 drawColum(content, parentID);
                 break;
             case 'section':
-                console.log('section: ', content);
                 drawColum(content, parentID);
                 break;
             case "widget":
-                console.log('widget: ', content);
                 drawWidget(content, parentID);
                 break;
         }
 
         if (content.elType !== "widget") {
-            console.log('sigue');
             builtBlogHTML(content);
         }
     }
@@ -115,7 +115,6 @@ function builtBlogHTML(_blog) {
 
 function drawColum(content, parentID) {
     const parentElement = $(`#${parentID}`);
-    console.log('contentColum: ', content);
 
     // border: 1px solid #900;
     $(parentElement).append(`<div id="${content.id}" style="padding: 5px; width: ${content.settings._column_size}%;"></div>`);
@@ -123,7 +122,6 @@ function drawColum(content, parentID) {
 
 async function drawWidget(content, parentID) {
     const parentElement = $(`#${parentID}`);
-    console.log('contentWidget: ', content);
 
     switch (content.widgetType) {
         case "text-editor":
@@ -142,7 +140,6 @@ async function drawWidget(content, parentID) {
             </div>`);
             break;
         case "button":
-            console.log("button: ", $(parentElement));
             $(parentElement).append(`
             <div style="
                 text-align: ${content.settings.align};
@@ -241,8 +238,6 @@ function initializeTooltipServiceView() {
         const card = $(elem).parent().parent();
         const cardID = `#${$(card).attr('id')}`;
 
-        console.log('card:', cardID);
-
         tippy(cardID, {
             maxWidth: 500,
             hideOnClick: true,
@@ -261,8 +256,6 @@ function initializeTooltipAboutView() {
         const title = $(elem).attr('modalTitle');
         const body = $(elem).attr('completeText');
         const cardID = `#${$(elem).attr('id')}`;
-
-        console.log('card:', cardID);
 
         tippy(cardID, {
             maxWidth: 500,
