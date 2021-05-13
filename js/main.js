@@ -1,10 +1,19 @@
 let element = '';
 let blog = "";
+const views = [
+    'formcontact',
+    'inicio',
+    'medicinadeportivaadultos',
+    'medicinadeportivaninos',
+    'nosotros',
+    'servicios'
+];
 
 $(document).ready(function() {
 
     $(document).on('click', '.nav-link', handlerClickNavItem);
     $(document).on('click', '#aceptConsent', handleClickAceptConsent);
+    $(document).on('click', '#btnSearch', handleClickBtnSearch);
     loadBlogFile();
     loadView({
         section: 'inicio'
@@ -266,4 +275,98 @@ function initializeTooltipAboutView() {
             content: `<h4>${title}</h4> ${body}`,
         });
     }
+}
+
+async function handleClickBtnSearch() {
+    $('#loading').show();
+
+    const filter = $('#txtSearch').val();
+    const arrFilter = filter.split(' ');
+    let contentSpace = $('#contentSpace');
+    let contentHome = $('#contentHome');
+    let arrToFind = new Array();
+    let arrFound = new Array();
+
+    for (const view of views) {
+        arrToFind.push({
+            name: view,
+            pageContent: await getContentView(view)
+        });
+    }
+
+    console.log('arrfind: ', arrToFind);
+
+    for (const page of arrToFind) {
+        for (const filter of arrFilter) {
+            if (page.pageContent.toLowerCase().indexOf(filter.trim().toLowerCase()) > -1) {
+                console.log('encontro');
+                arrFound.push({
+                    pageFound: page.name,
+                });
+            }
+        }
+    }
+
+    let html = '';
+    for (const found of arrFound) {
+        html += `<h3>${found.pageFound}</h3>`
+    }
+
+    contentHome.html("");
+    $('#loading').hide();
+    contentSpace.html(html);
+}
+
+async function getContentView(view) {
+    const result = await $.ajax({
+        type: 'GET',
+        url: `/views/${view}.html`
+    });
+
+    extractText(result);
+    return result;
+}
+
+function extractText(textHTML) {
+    let startIndex = 0;
+    let endIndex = 0;
+
+    const tag = {
+        open: '>',
+        close: '<'
+    };
+
+    let _text = textHTML.trim();
+    let arrText = new Array();
+    _text = _text.substring(1, _text.length - 1);
+
+    do {
+        startIndex = _text.indexOf(tag.open);
+        endIndex = _text.indexOf(tag.close);
+
+        if (startIndex !== -1 && endIndex !== -1) {
+            let str = _text.substring(startIndex + 1, endIndex);
+            // console.log('_text: ', str);
+            if (str.trim().length !== 0) {
+                arrText.push(str.toLowerCase());
+            }
+            _text = _text.substring(endIndex + 1);
+        }
+    } while (_text.indexOf(tag.open) !== -1);
+
+}
+
+function extractText2(textHTML) {
+    let startIndex = 0;
+    let endIndex = 0;
+
+    const tag = {
+        open: '<',
+        close: '/>'
+    };
+
+    let _text = textHTML.trim();
+    let arrText = new Array();
+
+
 }

@@ -236,8 +236,12 @@ a {
 .navbar-light .navbar-nav .nav-link:hover {
     color: #175E9F;
     animation-name: rubberBand !important;
-    /* -webkit-animation-name: rubberBand;
-    animation-name: rubberBand; */
+    -webkit-animation-name: rubberBand !important;
+    animation-name: rubberBand !important;
+}
+
+.bg-primary {
+    background-color: #1c97c3 !important;
 }
 
 
@@ -270,7 +274,8 @@ a {
 
 /* animation rubberBand */
 
-h1 {
+h1,
+h3 {
     color: #175E9F;
 }
 
@@ -298,7 +303,8 @@ body {
     font-style: normal;
 } */
 
-p {
+p,
+h5 {
     margin-top: 0;
     margin-bottom: 1rem;
     color: #1D97C3;
