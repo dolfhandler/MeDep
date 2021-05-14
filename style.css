@@ -310,3 +310,7 @@ h5 {
     color: #1D97C3;
     font-size: 20px;
 }
+
+.textFound {
+    background-color: rgba(255, 255, 15, 0.3);
+}

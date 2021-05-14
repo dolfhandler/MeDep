@@ -8,6 +8,13 @@ const views = [
     'nosotros',
     'servicios'
 ];
+const tagsWithText = {
+    tags: ['p', 'small', 'span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li']
+};
+const tagsWithTextInAttribute = {
+    tags: ['a', 'button'],
+    attrName: 'completeText'
+};
 
 $(document).ready(function() {
 
@@ -66,6 +73,19 @@ function loadView(options) {
                 $('#loading').show();
             },
             success: function(data) {
+                if (options.element !== undefined) {
+                    if (options.element.attr('phraseToMark')) {
+                        const phrase = options.element.attr('phraseToMark');
+
+                        data = markdown({
+                            element: data,
+                            filter: phrase,
+                            classMarkdown: "textFound"
+                        });
+                        console.log('////////////////////', data);
+                    }
+                }
+
                 $('.nav-link').removeClass('active');
 
                 if (options.section.toLowerCase() === "inicio") {
@@ -282,8 +302,6 @@ async function handleClickBtnSearch() {
 
     const filter = $('#txtSearch').val();
     const arrFilter = filter.split(' ');
-    let contentSpace = $('#contentSpace');
-    let contentHome = $('#contentHome');
     let arrToFind = new Array();
     let arrFound = new Array();
 
@@ -298,18 +316,110 @@ async function handleClickBtnSearch() {
 
     for (const page of arrToFind) {
         for (const filter of arrFilter) {
-            if (page.pageContent.toLowerCase().indexOf(filter.trim().toLowerCase()) > -1) {
-                console.log('encontro');
+
+            let found = searchInArrayText({
+                textToFind: filter,
+                arrayToFind: page.pageContent
+            });
+
+            if (found.length > 0) {
+                console.log('te encontre en: ', page.name);
+
                 arrFound.push({
                     pageFound: page.name,
+                    coincidences: found
                 });
             }
         }
     }
 
-    let html = '';
-    for (const found of arrFound) {
-        html += `<h3>${found.pageFound}</h3>`
+    renderResultToSerch(arrFound);
+}
+
+/**
+ * Este metodo recorre el texto en formato HTML y extrae el texto de cada tag
+ * dependiendo de los parametros que se especifiquen en las variables:
+ * - tagsWithText
+ * - tagsWithTextInAttribute
+ * @param {*} view -> Corresponde al texto en formato HTML
+ * @returns -> Devuelve un array con el texto de la vista HTML
+ */
+async function getContentView(view) {
+    const result = await $.ajax({
+        type: 'GET',
+        url: `/views/${view}.html`
+    });
+
+    return extractText(result);
+}
+
+function extractText(textHTML) {
+    let resultText = new Array();
+
+    const html = $(textHTML).children();
+    getTextFromTags(html, resultText);
+
+    console.log('resultText: ', resultText);
+    return resultText;
+}
+
+function getTextFromTags(elementHTML, arrayText) {
+    elementHTML.each(function(index, element) {
+
+        let tagName = $(element).prop('tagName').toLowerCase();
+        let textToAdd = '';
+        if (tagsWithText.tags.includes(tagName)) {
+            textToAdd = {
+                element: $(element),
+                text: $(element).text().trim().toLowerCase()
+            }
+        } else if (tagsWithTextInAttribute.tags.includes(tagName)) {
+            if ($(element).attr(tagsWithTextInAttribute.attrName)) { //attribute exist
+                // console.log('elemATTR: ', $(element));
+                textToAdd = {
+                    element: $(element),
+                    text: $(element).attr(tagsWithTextInAttribute.attrName).trim().toLowerCase()
+                }
+            }
+        }
+
+        if (textToAdd.length !== 0) {
+            arrayText.push(textToAdd);
+        }
+
+        // console.log('condition: ', $(element).children());
+        if ($(element).children().length > 0) {
+            let ne = $(element).children();
+            getTextFromTags($(element).children(), arrayText);
+        }
+    });
+}
+
+function searchInArrayText(obj) {
+    const founds = obj.arrayToFind.filter(t => t.text.indexOf(obj.textToFind) !== -1);
+    const fmap = founds.map(x => { return { text: x.text, element: x.element, filter: obj.textToFind } });
+    return fmap;
+}
+
+function renderResultToSerch(arrFound) {
+    let contentSpace = $('#contentSpace');
+    let contentHome = $('#contentHome');
+
+    let html = '<h3>Resultados encontrados</h3>';
+    if (arrFound.length > 0) {
+
+        for (const found of arrFound) {
+            for (const coincidence of found.coincidences) {
+                html += `<a href="javascript:;" class="nav-link" 
+                templatehtml="${found.pageFound}" 
+                phraseToMark="${coincidence.filter}">
+                    <p>${coincidence.text}</p>
+                </a>`;
+            }
+        }
+
+    } else {
+        html += `<h3>No se encontro ningun resultado para <b>${filter}</b></h3>`;
     }
 
     contentHome.html("");
@@ -317,56 +427,10 @@ async function handleClickBtnSearch() {
     contentSpace.html(html);
 }
 
-async function getContentView(view) {
-    const result = await $.ajax({
-        type: 'GET',
-        url: `/views/${view}.html`
-    });
-
-    extractText(result);
-    return result;
-}
-
-function extractText(textHTML) {
-    let startIndex = 0;
-    let endIndex = 0;
-
-    const tag = {
-        open: '>',
-        close: '<'
-    };
-
-    let _text = textHTML.trim();
-    let arrText = new Array();
-    _text = _text.substring(1, _text.length - 1);
-
-    do {
-        startIndex = _text.indexOf(tag.open);
-        endIndex = _text.indexOf(tag.close);
-
-        if (startIndex !== -1 && endIndex !== -1) {
-            let str = _text.substring(startIndex + 1, endIndex);
-            // console.log('_text: ', str);
-            if (str.trim().length !== 0) {
-                arrText.push(str.toLowerCase());
-            }
-            _text = _text.substring(endIndex + 1);
-        }
-    } while (_text.indexOf(tag.open) !== -1);
-
-}
-
-function extractText2(textHTML) {
-    let startIndex = 0;
-    let endIndex = 0;
-
-    const tag = {
-        open: '<',
-        close: '/>'
-    };
-
-    let _text = textHTML.trim();
-    let arrText = new Array();
-
-
+// element
+// filter
+// classMarkdown
+function markdown(param) {
+    const newText = param.element.toLowerCase().replaceAll(param.filter.toLowerCase(), `<span class="${param.classMarkdown}">${param.filter}</span>`)
+    return newText;
 }
