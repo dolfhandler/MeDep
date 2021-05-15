@@ -46,7 +46,7 @@ a {
     width: 200px;
     height: 200px;
     border-radius: 100%;
-    background: url('/image/about/about-1.jpg') no-repeat center center/cover;
+    background: url('/image/about/about-1.jpg') no-repeat left top/cover;
 }
 
 .image-about-2 {
@@ -313,4 +313,11 @@ h5 {
 
 .textFound {
     background-color: rgba(255, 255, 15, 0.3);
+}
+
+.wp-float {
+    position: fixed;
+    bottom: 50%;
+    right: 2%;
+    font-size: 25px;
 }

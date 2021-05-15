@@ -50,12 +50,18 @@ function loadView(options) {
     let contentSpace = $('#contentSpace');
     let contentHome = $('#contentHome');
 
+    if (options.section.toLowerCase() === 'servicios') {
+        $('#element9').show();
+    } else {
+        $('#element9').hide();
+    }
+
     if (options.section.toLowerCase() === 'blog') {
         contentSpace.html('');
+        contentHome.html("");
         contentSpace.addClass("mt-4");
 
         for (let content of blog.content) {
-            // border: 1px solid #009900;
             contentSpace.append(`<section id="${content.id}" style="padding: 5px;  width: 100%; display: flex; flex-direction: row;" ></section>`)
             builtBlogHTML(content);
         }
@@ -75,14 +81,14 @@ function loadView(options) {
             success: function(data) {
                 if (options.element !== undefined) {
                     if (options.element.attr('phraseToMark')) {
-                        const phrase = options.element.attr('phraseToMark');
+                        const phrase = options.element.attr('phraseToMark').toLowerCase();
 
-                        data = markdown({
-                            element: data,
+                        data = markdownFilterInView({
+                            pageText: data,
                             filter: phrase,
                             classMarkdown: "textFound"
                         });
-                        console.log('////////////////////', data);
+                        // console.log('////////////////////', data);
                     }
                 }
 
@@ -92,6 +98,8 @@ function loadView(options) {
                     contentSpace.html("");
                     contentHome.html(data);
                     $('#homePage').addClass('active');
+
+                    loadBlogFile();
                 } else {
                     contentHome.html("");
                     contentSpace.html(data);
@@ -117,6 +125,10 @@ async function writeBlogFile() {
 
 async function loadBlogFile() {
     blog = await writeBlogFile();
+
+    for (let content of blog.content) {
+        getFirstEditorText(content);
+    }
 }
 
 function builtBlogHTML(_blog) {
@@ -139,7 +151,6 @@ function builtBlogHTML(_blog) {
             builtBlogHTML(content);
         }
     }
-
 }
 
 function drawColum(content, parentID) {
@@ -312,18 +323,18 @@ async function handleClickBtnSearch() {
         });
     }
 
-    console.log('arrfind: ', arrToFind);
+    // console.log('arrfind: ', arrToFind);
 
     for (const page of arrToFind) {
         for (const filter of arrFilter) {
 
             let found = searchInArrayText({
-                textToFind: filter,
+                textToFind: filter.toLowerCase(),
                 arrayToFind: page.pageContent
             });
 
             if (found.length > 0) {
-                console.log('te encontre en: ', page.name);
+                // console.log('te encontre en: ', page.name);
 
                 arrFound.push({
                     pageFound: page.name,
@@ -359,7 +370,7 @@ function extractText(textHTML) {
     const html = $(textHTML).children();
     getTextFromTags(html, resultText);
 
-    console.log('resultText: ', resultText);
+    // console.log('resultText: ', resultText);
     return resultText;
 }
 
@@ -419,7 +430,8 @@ function renderResultToSerch(arrFound) {
         }
 
     } else {
-        html += `<h3>No se encontro ningun resultado para <b>${filter}</b></h3>`;
+        const filter = $('#txtSearch').val();
+        html += `<P>No se encontro ningun resultado para <b>${filter}</b></P>`;
     }
 
     contentHome.html("");
@@ -427,10 +439,87 @@ function renderResultToSerch(arrFound) {
     contentSpace.html(html);
 }
 
-// element
+// param propertiees
+// pageText
 // filter
 // classMarkdown
-function markdown(param) {
-    const newText = param.element.toLowerCase().replaceAll(param.filter.toLowerCase(), `<span class="${param.classMarkdown}">${param.filter}</span>`)
-    return newText;
+function markdownFilterInView(param) {
+    let html = $(param.pageText);
+    getTextFromTagsMarkdown(html.children(), param.filter);
+
+    // console.log('-------------------xxxxxxxxxxxxxxx---------------------', html);
+    return html;
+}
+
+function getTextFromTagsMarkdown(elementHTML, filter) {
+    elementHTML.each(function(index, element) {
+
+        let tagName = $(element).prop('tagName').toLowerCase();
+        let bfound = false;
+
+        if (tagsWithText.tags.includes(tagName)) {
+            const text = $(element).text().trim().toLowerCase();
+            const copyText = $(element).text().trim();
+            const ind = text.indexOf(filter);
+            if (ind !== -1) {
+                bfound = true;
+                const beforeTextFound = copyText.substr(0, ind);
+                const textFound = copyText.substr(ind, filter.length);
+                const afterTextFound = copyText.substr(ind + filter.length);
+                // console.log({ aoriginal: text, bclone: copyText });
+                // console.log('//////////////////////////////////////////');
+                // console.log('encontrado', { aafilter: filter, acopytext: copyText, bBefore: beforeTextFound, cbetween: textFound, dafter: afterTextFound });
+                // console.log('encontrado', `${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`);
+                $(element).html(`${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`);
+            }
+        } else if (tagsWithTextInAttribute.tags.includes(tagName)) {
+            if ($(element).attr(tagsWithTextInAttribute.attrName)) { //attribute exist
+
+            }
+        }
+
+        if ($(element).children().length > 0) {
+            if (!bfound) {
+                // console.log('condition ' + tagName + ': ', $(element).children().length);
+                getTextFromTagsmarkdown($(element).children(), filter);
+            } else {
+                // console.log('condition ' + tagName + ': ', $(element).children().children().length);
+                getTextFromTagsmarkdown($(element).children().children(), filter);
+            }
+        }
+    });
+}
+
+function getFirstEditorText(_blog) {
+    for (let content of _blog.elements) {
+
+        switch (content.elType) {
+            case "widget":
+                drawFirstEditorTextWidget(content);
+                break;
+        }
+
+        if (content.elType !== "widget") {
+            getFirstEditorText(content);
+        }
+    }
+}
+
+async function drawFirstEditorTextWidget(content, parentID) {
+    const parentElement = $(`#containerFragmentBlog`);
+
+    switch (content.widgetType) {
+        case "text-editor":
+            $(parentElement).append(`
+            <div>
+                ${content.settings.editor}
+                <a class="nav-link viewMore text-white bg-primary" templatehtml="Blog" style="position: absolute; bottom: 0%;
+                right: 0%;">
+                    Ir al blog
+                </a>
+            </div>`);
+            break;
+        default:
+            break;
+    }
 }
