@@ -9,7 +9,7 @@ const views = [
     'servicios'
 ];
 const tagsWithText = {
-    tags: ['p', 'small', 'span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li']
+    tags: ['p', 'b', 'small', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li']
 };
 const tagsWithTextInAttribute = {
     tags: ['a', 'button'],
@@ -447,7 +447,6 @@ function markdownFilterInView(param) {
     let html = $(param.pageText);
     getTextFromTagsMarkdown(html.children(), param.filter);
 
-    // console.log('-------------------xxxxxxxxxxxxxxx---------------------', html);
     return html;
 }
 
@@ -455,39 +454,52 @@ function getTextFromTagsMarkdown(elementHTML, filter) {
     elementHTML.each(function(index, element) {
 
         let tagName = $(element).prop('tagName').toLowerCase();
-        let bfound = false;
+        // let bfound = false;
 
         if (tagsWithText.tags.includes(tagName)) {
-            const text = $(element).text().trim().toLowerCase();
-            const copyText = $(element).text().trim();
-            const ind = text.indexOf(filter);
-            if (ind !== -1) {
-                bfound = true;
-                const beforeTextFound = copyText.substr(0, ind);
-                const textFound = copyText.substr(ind, filter.length);
-                const afterTextFound = copyText.substr(ind + filter.length);
-                // console.log({ aoriginal: text, bclone: copyText });
-                // console.log('//////////////////////////////////////////');
-                // console.log('encontrado', { aafilter: filter, acopytext: copyText, bBefore: beforeTextFound, cbetween: textFound, dafter: afterTextFound });
-                // console.log('encontrado', `${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`);
-                $(element).html(`${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`);
-            }
+            embedMarkdown($(element), filter);
         } else if (tagsWithTextInAttribute.tags.includes(tagName)) {
             if ($(element).attr(tagsWithTextInAttribute.attrName)) { //attribute exist
-
+                embedMarkdown($(element), filter);
             }
         }
 
         if ($(element).children().length > 0) {
-            if (!bfound) {
-                // console.log('condition ' + tagName + ': ', $(element).children().length);
-                getTextFromTagsmarkdown($(element).children(), filter);
-            } else {
-                // console.log('condition ' + tagName + ': ', $(element).children().children().length);
-                getTextFromTagsmarkdown($(element).children().children(), filter);
-            }
+            // if (!bfound) {
+            // console.log('condition ' + tagName + ': ', $(element).children().length);
+            getTextFromTagsMarkdown($(element).children(), filter);
+            // } else {
+            // // console.log('condition ' + tagName + ': ', $(element).children().children().length);
+            // getTextFromTagsMarkdown($(element).children().children(), filter);
+            // }
         }
     });
+}
+
+function embedMarkdown(element, filter) {
+    let text = element.text().trim().toLowerCase();
+    let copyText = element.text().trim();
+
+    const indexs = text.indexOfAll(filter);
+    let content = '';
+    if (indexs.length > 0) {
+        for (const index of indexs) {
+            let ind = index;
+            if (ind !== -1) {
+                let beforeTextFound = copyText.substr(0, ind);
+                let textFound = copyText.substr(ind, filter.length);
+                let afterTextFound = copyText.substr(ind + filter.length);
+                console.log('//////////////////' + ind + '////////////////////////');
+                // console.log({ indtext, bclone: copyText });
+                console.log({ aafilter: filter, acopytext: copyText, bBefore: beforeTextFound, cbetween: textFound, dafter: afterTextFound });
+                // console.log('encontrado', `${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`);
+
+                content = `${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`;
+                copyText = content;
+            }
+        }
+        element.html(content);
+    }
 }
 
 function getFirstEditorText(_blog) {
@@ -496,7 +508,7 @@ function getFirstEditorText(_blog) {
         switch (content.elType) {
             case "widget":
                 drawFirstEditorTextWidget(content);
-                break;
+                return;
         }
 
         if (content.elType !== "widget") {
@@ -505,7 +517,7 @@ function getFirstEditorText(_blog) {
     }
 }
 
-async function drawFirstEditorTextWidget(content, parentID) {
+function drawFirstEditorTextWidget(content, parentID) {
     const parentElement = $(`#containerFragmentBlog`);
 
     switch (content.widgetType) {
@@ -518,8 +530,20 @@ async function drawFirstEditorTextWidget(content, parentID) {
                     Ir al blog
                 </a>
             </div>`);
-            break;
-        default:
-            break;
+            return;
     }
+}
+
+String.prototype.indexOfAll = function(find) {
+    let indexFound = new Array();
+    let text = this;
+    do {
+        const index = text.lastIndexOf(find);
+        if (index !== -1) {
+            indexFound.push(index);
+            text = text.substr(0, index);
+        }
+    } while (text.lastIndexOf(find) !== -1);
+
+    return indexFound;
 }
