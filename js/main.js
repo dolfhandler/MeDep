@@ -128,7 +128,7 @@ async function writeBlogFile() {
 
 async function loadBlogFile() {
     blog = await writeBlogFile();
-    console.log('////////////////', blog);
+    // console.log('////////////////', blog);
 
     for (let content of blog.content) {
         let found = false;
@@ -512,9 +512,9 @@ function embedMarkdown(element, filter) {
                 let beforeTextFound = copyText.substr(0, ind);
                 let textFound = copyText.substr(ind, filter.length);
                 let afterTextFound = copyText.substr(ind + filter.length);
-                console.log('//////////////////' + ind + '////////////////////////');
+                // console.log('//////////////////' + ind + '////////////////////////');
                 // console.log({ indtext, bclone: copyText });
-                console.log({ aafilter: filter, acopytext: copyText, bBefore: beforeTextFound, cbetween: textFound, dafter: afterTextFound });
+                // console.log({ aafilter: filter, acopytext: copyText, bBefore: beforeTextFound, cbetween: textFound, dafter: afterTextFound });
                 // console.log('encontrado', `${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`);
 
                 content = `${beforeTextFound}<span class="textFound">${textFound}</span>${afterTextFound}`;
