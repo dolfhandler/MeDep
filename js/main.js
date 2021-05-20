@@ -272,9 +272,9 @@ async function drawWidget(content, parentID) {
             }
             $(parentElement).append(`<div style="color: #FDCC0D">${stars}</div>`);
             break;
-        case "spacer":
-            $(parentElement).append(`<div style="width: ${content.settings.space.size}${content.settings.space.unit};">${stars}</div>`);
-            break;
+            // case "spacer":
+            //     $(parentElement).append(`<div style="width: ${content.settings.space.size}${content.settings.space.unit};"></div>`);
+            //     break;
         default:
             break;
     }
