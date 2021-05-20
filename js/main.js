@@ -1,3 +1,4 @@
+let flag = 0;
 let element = '';
 let blog = "";
 const views = [
@@ -21,7 +22,7 @@ $(document).ready(function() {
     $(document).on('click', '.nav-link', handlerClickNavItem);
     $(document).on('click', '#aceptConsent', handleClickAceptConsent);
     $(document).on('click', '#btnSearch', handleClickBtnSearch);
-    loadBlogFile();
+    $(document).on('keydown', '#txtSearch', handleKeyReleaseBtnSearch);
     loadView({
         section: 'inicio'
     });
@@ -51,7 +52,10 @@ function loadView(options) {
     let contentHome = $('#contentHome');
 
     if (options.section.toLowerCase() === 'servicios') {
-        $('#element9').show();
+        if (screen.width > 700)
+            $('#element9').show();
+        else
+            $('#element9').hide();
     } else {
         $('#element9').hide();
     }
@@ -88,7 +92,6 @@ function loadView(options) {
                             filter: phrase,
                             classMarkdown: "textFound"
                         });
-                        // console.log('////////////////////', data);
                     }
                 }
 
@@ -125,9 +128,20 @@ async function writeBlogFile() {
 
 async function loadBlogFile() {
     blog = await writeBlogFile();
+    console.log('////////////////', blog);
 
     for (let content of blog.content) {
-        getFirstEditorText(content);
+        let found = false;
+        found = getFirstHeaderText(content, found);
+
+        if (found) break;
+    }
+
+    for (let content of blog.content) {
+        let found = false;
+        found = getFirstEditorText(content, found);
+
+        if (found) break;
     }
 }
 
@@ -258,6 +272,9 @@ async function drawWidget(content, parentID) {
             }
             $(parentElement).append(`<div style="color: #FDCC0D">${stars}</div>`);
             break;
+        case "spacer":
+            $(parentElement).append(`<div style="width: ${content.settings.space.size}${content.settings.space.unit};">${stars}</div>`);
+            break;
         default:
             break;
     }
@@ -306,6 +323,12 @@ function initializeTooltipAboutView() {
             content: `<h4>${title}</h4> ${body}`,
         });
     }
+}
+
+function handleKeyReleaseBtnSearch(event) {
+    // console.log("---------------------------------", $(event));
+    if (event.which === 13)
+        handleClickBtnSearch();
 }
 
 async function handleClickBtnSearch() {
@@ -416,7 +439,7 @@ function renderResultToSerch(arrFound) {
     let contentSpace = $('#contentSpace');
     let contentHome = $('#contentHome');
 
-    let html = '<h3>Resultados encontrados</h3>';
+    let html = '<h3 class="mt-4">Resultados encontrados</h3>';
     if (arrFound.length > 0) {
 
         for (const found of arrFound) {
@@ -502,36 +525,78 @@ function embedMarkdown(element, filter) {
     }
 }
 
-function getFirstEditorText(_blog) {
+function getFirstEditorText(_blog, found) {
     for (let content of _blog.elements) {
 
-        switch (content.elType) {
-            case "widget":
-                drawFirstEditorTextWidget(content);
-                return;
+        if (content.elType === "widget" && content.widgetType === "text-editor") {
+            drawFirstEditorTextWidget(content);
+            // found = found || true;
+            // break;
+            return found || true;
         }
 
         if (content.elType !== "widget") {
-            getFirstEditorText(content);
+            // console.log('entracomo: ', { a: found });
+            // found = getFirstEditorText(content, found) || false;
+            // break;
+            return getFirstEditorText(content, found) || false;
         }
     }
+    // console.log('endFound: ', { a: (found || false) });
+    // found = found || false;
+    // return found;
+    return found || false;
 }
 
-function drawFirstEditorTextWidget(content, parentID) {
+function drawFirstEditorTextWidget(content) {
     const parentElement = $(`#containerFragmentBlog`);
 
-    switch (content.widgetType) {
-        case "text-editor":
-            $(parentElement).append(`
-            <div>
-                ${content.settings.editor}
-                <a class="nav-link viewMore text-white bg-primary" templatehtml="Blog" style="position: absolute; bottom: 0%;
-                right: 0%;">
-                    Ir al blog
-                </a>
-            </div>`);
-            return;
+    $(parentElement).append(`
+    <div>
+        ${content.settings.editor}
+        <a class="nav-link viewMore text-white bg-primary" templatehtml="Blog" style="position: absolute; bottom: 0%;
+        right: 0%;">
+            Ir al blog
+        </a>
+    </div>`);
+}
+
+function getFirstHeaderText(_blog, found) {
+    for (let content of _blog.elements) {
+
+        if (content.elType === "widget" && content.widgetType === "heading") {
+            drawFirstHeadingTextWidget(content);
+            // found = found || true;
+            // break;
+            return found || true;
+        }
+
+        if (content.elType !== "widget") {
+            // console.log('entracomo: ', { a: found });
+            // found = getFirstEditorText(content, found) || false;
+            // break;
+            return getFirstHeaderText(content, found) || false;
+        }
     }
+    // console.log('endFound: ', { a: (found || false) });
+    // found = found || false;
+    // return found;
+    return found || false;
+}
+
+function drawFirstHeadingTextWidget(content) {
+    const parentElement = $(`#containerTitleBlog`);
+
+    parentElement.append(`<div style="
+    text-align: ${content.settings.align};
+    color: ${content.settings.title_color};
+    font-family: ${content.settings.typography_font_family};
+    font-weight: ${content.settings.typography_font_weight};
+    font-size: ${content.settings.typography_font_size.size} ${content.settings.typography_font_size.unit};
+    text-align: ${content.settings.align};
+    ">
+    <h1>${content.settings.title}</h1>
+    </div>`);
 }
 
 String.prototype.indexOfAll = function(find) {

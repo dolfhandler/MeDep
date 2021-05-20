@@ -6,22 +6,8 @@ a {
     cursor: pointer;
 }
 
-.carousel-image-1,
-.carousel-image-2,
-.carousel-image-3 {
-    height: 650px;
-}
-
-.carousel-image-1 {
-    background: url('image/photos/photo-2.JPG') no-repeat center center/cover;
-}
-
-.carousel-image-2 {
-    background: url('image/photos/photo-3.JPG') no-repeat center center/cover;
-}
-
-.carousel-image-3 {
-    background: url('image/photos/photo-4.JPG') no-repeat center center/cover;
+.carousel-image {
+    height: 750px;
 }
 
 .carouselSelector {
