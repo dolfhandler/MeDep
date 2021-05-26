@@ -1,18 +1,15 @@
 {
-    "version": "0.4",
-    "title": "Blog",
-    "type": "page",
     "content": [{
-            "id": "66d338f1",
+            "id": "1d208417",
             "settings": [],
             "elements": [{
-                "id": "6db0ad07",
+                "id": "3d41dc5e",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "6030298e",
+                    "id": "7e710e36",
                     "settings": {
                         "carousel": [{
                                 "id": 73,
@@ -43,18 +40,18 @@
             "elType": "section"
         },
         {
-            "id": "53223e9",
+            "id": "1ada398c",
             "settings": {
                 "structure": "20"
             },
             "elements": [{
-                    "id": "7c797c8e",
+                    "id": "15f4bab9",
                     "settings": {
                         "_column_size": 50,
                         "_inline_size": null
                     },
                     "elements": [{
-                        "id": "34097efe",
+                        "id": "4706d90a",
                         "settings": [],
                         "elements": [],
                         "isInner": false,
@@ -65,13 +62,13 @@
                     "elType": "column"
                 },
                 {
-                    "id": "9f57592",
+                    "id": "bc2cad3",
                     "settings": {
                         "_column_size": 50,
                         "_inline_size": null
                     },
                     "elements": [{
-                        "id": "71f6e05",
+                        "id": "2a718b1a",
                         "settings": {
                             "space": {
                                 "unit": "px",
@@ -92,18 +89,18 @@
             "elType": "section"
         },
         {
-            "id": "20954dff",
+            "id": "579066df",
             "settings": [],
             "elements": [{
-                "id": "71b8df58",
+                "id": "64093bcb",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "720249d2",
+                    "id": "3c40e63e",
                     "settings": {
-                        "title": "\u00bfC\u00f3mo retomar el ejercicio despu\u00e9s de tener COVID- 19?",
+                        "title": "\u00bfC\u00f3mo retomar el ejercicio despu\u00e9s de tener COVID-19?",
                         "align": "center",
                         "title_color": "#37BBF3",
                         "typography_typography": "custom",
@@ -127,16 +124,16 @@
             "elType": "section"
         },
         {
-            "id": "2c9547c5",
+            "id": "4acddec8",
             "settings": [],
             "elements": [{
-                "id": "1d599e5b",
+                "id": "3b51dafa",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "6d938198",
+                    "id": "4585196a",
                     "settings": {
                         "image": {
                             "url": "https:\/\/medepmedicinadeportiva.com\/wp-content\/uploads\/2021\/04\/COVID.png",
@@ -161,27 +158,27 @@
             "elType": "section"
         },
         {
-            "id": "706c6cfc",
+            "id": "1b2e209",
             "settings": [],
             "elements": [{
-                "id": "75338960",
+                "id": "4fa953e4",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "53f80d01",
+                    "id": "1769e96c",
                     "settings": [],
                     "elements": [{
-                        "id": "359072d7",
+                        "id": "42987ddf",
                         "settings": {
                             "_column_size": 100,
                             "_inline_size": null
                         },
                         "elements": [{
-                            "id": "979ff76",
+                            "id": "63a46042",
                             "settings": {
-                                "editor": "<p>Antes de responder a esta pregunta debes saber que el COVID-19 no afecta solamente los pulmones sino otros \u00f3rganos y dentro de ellos se encuentra el coraz\u00f3n, se ha conocido que incluso los cuadros m\u00e1s leves pueden causar alteraciones en el sistema cardiovascular.<\/p><p>Este es uno de los motivos por el cual luego de haber padecido COVID- 19 se requiere una valoraci\u00f3n medica, en ocasiones multidisciplinaria (M\u00e9dicos del Deporte, Cardi\u00f3logos, Neum\u00f3logos entre, otros), antes y durante la vuelta a la actividad f\u00edsica o el deporte.<\/p><p><em><strong>\u00bfY por qu\u00e9 es importante el coraz\u00f3n?<\/strong><\/em><\/p><p>Recuerda que durante la actividad f\u00edsica y m\u00e1s aquella que se realiza a altas intensidades, la demanda y la respuesta del coraz\u00f3n es diferente a cuando nos encontramos en reposo, lo que le exige un mayor trabajo, as\u00ed que si tiene alg\u00fan da\u00f1o asociado a la infecci\u00f3n por el coronavirus, esto puede traer complicaciones como arritmias e incluso la muerte, ya que esta infecci\u00f3n puede generar inflamaci\u00f3n en el m\u00fasculo cardiaco (Miocarditis) la cual genera cicatrices o fibrosis.<\/p><p>Algunas sociedades m\u00e9dicas de otros pa\u00edses como Brasil, aconsejan a las personas que hayan tenido COVID \u2013 19, que deben someterse a evaluaci\u00f3n m\u00e9dica, y el tiempo de vuelta depender\u00e1 de la evoluci\u00f3n que haya tenido la infecci\u00f3n, las complicaciones y algunos ex\u00e1menes m\u00e9dicos. Sin embargo, en nuestro pa\u00eds en un consenso realizado por expertos de Medicina del Deporte en 2020* se aconseja en pacientes con PCR negativa para COVID-19 y asintom\u00e1ticos que no tengan limitaciones para la pr\u00e1ctica de actividad o ejercicio f\u00edsico deben seguir recomendaciones de distanciamiento y vigilar la aparici\u00f3n de s\u00edntomas; en pacientes con COVID \u2013 19 positivo se dividir\u00e1n en tres grupos:<\/p><p>- <span style=\"text-decoration: underline;\"><em>Asintom\u00e1ticos:<\/em><\/span> personas con PCR positivo sin s\u00edntomas: se indica guardar reposo, no realizar actividad f\u00edsica, realizar seguimiento de s\u00edntomas y complicaciones, realizarse nuevo test a las 2 semanas y si la PCR es negativa puede retomar actividad f\u00edsica en casa progresiva y cuando otro test que eval\u00faa la IgG sea positiva puedes realizar actividad al aire libre.<br \/>- <span style=\"text-decoration: underline;\"><em>PCR positiva y s\u00edntomas manejados en casa:<\/em><\/span> se indica guardar reposo, no realizar actividad f\u00edsica, realizar seguimiento de s\u00edntomas y complicaciones, realizarse nuevo test a las 2 semanas si la PCR es negativa debe considerarse la valoraci\u00f3n por Medicina de Deporte para evaluar el riesgo, prescribir el ejercicio y realizar seguimientos. <br \/>- <span style=\"text-decoration: underline;\"><em>PCR positiva y hospitalizaci\u00f3n:<\/em><\/span> se indica guardar reposo, no realizar actividad f\u00edsica, realizar seguimiento de s\u00edntomas y complicaciones, realizarse nuevo test seg\u00fan la evoluci\u00f3n, valoraci\u00f3n por Medicina de Deporte de manera peri\u00f3dica antes de reiniciar la actividad f\u00edsica o ejercicio, se requiere de prescripci\u00f3n y monitoreo estricto de s\u00edntomas y ex\u00e1menes de laboratorio o im\u00e1genes diagn\u00f3sticas seg\u00fan el caso.<\/p><p><strong><em>\u00bfEntonces, c\u00f3mo reiniciar la actividad f\u00edsica o el deporte?<\/em><\/strong><\/p><p>Esto debe realizarse de manera progresiva recuerda que tu cuerpo ha perdido acondicionamiento, por lo que se debe iniciar iniciar con actividad f\u00edsica leve (puedes guiarte con la escala de Borg), e ir aumentando de manera paulatina la percepci\u00f3n del esfuerzo este debe incluir fortalecimiento muscular. Si durante la pr\u00e1ctica llegas a sentir palpitaciones, cansancio, dificultad para respirar, dolor en el pecho debes consultar de inmediato a tu m\u00e9dico del deporte de confianza.<\/p><p><strong>Recuerda!<\/strong> Que presentar s\u00edntomas sugestivos de infecci\u00f3n por COVID-19 como lo son: tos seca, fiebre, secreci\u00f3n nasal, disnea, o cualquier estado infeccioso agudo es una contraindicaci\u00f3n para realizar actividad f\u00edsica o ejercicio.<\/p><p><em><strong>\u00bfQu\u00e9 tiempo se requiere para retomar la actividad f\u00edsica luego de la evaluaci\u00f3n del riesgo?<\/strong><\/em><\/p><p>Esta puede tomar hasta 3 a 6 meses despu\u00e9s la de restricci\u00f3n de realizar actividad f\u00edsica y est\u00e1 decisi\u00f3n para retomar se basar\u00e1 en varios par\u00e1metros como lo son: el ecocardiograma, prueba de esfuerzo con monitoreo cardiaco y en ocasiones consultas multidisciplinarias.<\/p><p>*Camilo A. Camargo Puerto1, MD. Laura M. Forero Ariza2, MD. Larry Quinn Castro3, MD. Carlos A. Su\u00e1rez Forero4, MD.Actividad F\u00edsica al aire libre en adultos aparentemente sanos durante la pandemia por COVID-19: una declaraci\u00f3n de consenso. 2020.<\/p>"
+                                "editor": "<p>Antes de responder a esta pregunta debes saber que el COVID-19 no afecta solamente los pulmones sino otros \u00f3rganos y dentro de ellos se encuentra el coraz\u00f3n, se ha conocido que incluso los cuadros m\u00e1s leves pueden causar alteraciones en el sistema cardiovascular.<\/p><p>Este es uno de los motivos por el cual luego de haber padecido COVID-19 se requiere una valoraci\u00f3n m\u00e9dica, en ocasiones multidisciplinaria (M\u00e9dicos del Deporte, Cardi\u00f3logos, Neum\u00f3logos, entre otros), antes y durante la vuelta a la actividad f\u00edsica o el deporte.<\/p><p><strong><i>\u00bfY por qu\u00e9 es importante el coraz\u00f3n?<\/i><\/strong><\/p><p>Recuerda que durante la actividad f\u00edsica y m\u00e1s aquella que se realiza a altas intensidades, la demanda y la respuesta del coraz\u00f3n es diferente a cuando nos encontramos en reposo, lo que le exige un mayor trabajo, as\u00ed que si tiene alg\u00fan da\u00f1o asociado a la infecci\u00f3n por el coronavirus, esto puede traer complicaciones como arritmias e incluso la muerte, ya que esta infecci\u00f3n puede generar inflamaci\u00f3n en el m\u00fasculo cardiaco (Miocarditis) la cual genera cicatrices o fibrosis.<\/p><p>Algunas sociedades m\u00e9dicas de otros pa\u00edses como Brasil, aconsejan a las personas que hayan tenido COVID-19, que deben someterse a evaluaci\u00f3n m\u00e9dica, y el tiempo de vuelta depender\u00e1 de la evoluci\u00f3n que haya tenido la infecci\u00f3n, las complicaciones y algunos ex\u00e1menes m\u00e9dicos. Sin embargo, en nuestro pa\u00eds en un consenso realizado por expertos de Medicina del Deporte en 2020* se aconseja en pacientes con PCR negativa para COVID-19 y asintom\u00e1ticos que no tengan limitaciones para la pr\u00e1ctica de actividad o ejercicio f\u00edsico deben seguir recomendaciones de distanciamiento y vigilar la aparici\u00f3n de s\u00edntomas; en pacientes con COVID\u201319 positivo se dividir\u00e1n en tres grupos:<\/p><p>- <em><u>Asintom\u00e1ticos:<\/u><\/em> personas con PCR positivo sin s\u00edntomas: se indica guardar reposo, no realizar actividad f\u00edsica, realizar seguimiento de s\u00edntomas y complicaciones, realizarse nuevo test a las 2 semanas y si la PCR es negativa puede retomar actividad f\u00edsica en casa progresiva y cuando otro test que eval\u00faa la IgG sea positiva puedes realizar actividad al aire libre.<br \/>- <em><u>PCR positiva y s\u00edntomas manejados en casa:<\/u><\/em> se indica guardar reposo, no realizar actividad f\u00edsica, realizar seguimiento de s\u00edntomas y complicaciones, realizarse nuevo test a las 2 semanas si la PCR es negativa debe considerarse la valoraci\u00f3n por Medicina de Deporte para evaluar el riesgo, prescribir el ejercicio y realizar seguimientos.<br \/>- <em><u>PCR positiva y hospitalizaci\u00f3n:<\/u><\/em> se indica guardar reposo, no realizar actividad f\u00edsica, realizar seguimiento de s\u00edntomas y complicaciones, realizarse nuevo test seg\u00fan la evoluci\u00f3n, valoraci\u00f3n por Medicina de Deporte de manera peri\u00f3dica antes de reiniciar la actividad f\u00edsica o ejercicio, se requiere de prescripci\u00f3n y monitoreo estricto de s\u00edntomas y ex\u00e1menes de laboratorio o im\u00e1genes diagn\u00f3sticas seg\u00fan el caso.<\/p><p><em><b>\u00bfEntonces, c\u00f3mo reiniciar la actividad f\u00edsica o el deporte?<\/b><\/em><\/p><p>Esto debe realizarse de manera progresiva recuerda que tu cuerpo ha perdido acondicionamiento, por lo que se debe iniciar iniciar con actividad f\u00edsica leve (puedes guiarte con la escala de Borg), e ir aumentando de manera paulatina la percepci\u00f3n del esfuerzo este debe incluir fortalecimiento muscular. Si durante la pr\u00e1ctica llegas a sentir palpitaciones, cansancio, dificultad para respirar, dolor en el pecho debes consultar de inmediato a tu m\u00e9dico del deporte de confianza.<\/p><p><strong>Recuerda!<\/strong> Que presentar s\u00edntomas sugestivos de infecci\u00f3n por COVID-19 como lo son: tos seca, fiebre, secreci\u00f3n nasal, disnea, o cualquier estado infeccioso agudo es una contraindicaci\u00f3n para realizar actividad f\u00edsica o ejercicio.<\/p><p><strong><i>\u00bfQu\u00e9 tiempo se requiere para retomar la actividad f\u00edsica luego de la evaluaci\u00f3n del riesgo?<\/i><\/strong><\/p><p>Esta puede tomar hasta 3 a 6 meses despu\u00e9s la de restricci\u00f3n de realizar actividad f\u00edsica y est\u00e1 decisi\u00f3n para retomar se basar\u00e1 en varios par\u00e1metros como lo son: el ecocardiograma, prueba de esfuerzo con monitoreo cardiaco y en ocasiones consultas multidisciplinarias.<\/p><p>*Camilo A. Camargo Puerto1, MD. Laura M. Forero Ariza2, MD. Larry Quinn Castro3, MD. Carlos A. Su\u00e1rez Forero4, MD.Actividad F\u00edsica al aire libre en adultos aparentemente sanos durante la pandemia por COVID-19: una declaraci\u00f3n de consenso. 2020.<\/p>"
                             },
                             "elements": [],
                             "isInner": false,
@@ -201,16 +198,16 @@
             "elType": "section"
         },
         {
-            "id": "7e282e7f",
+            "id": "4b3f5b7b",
             "settings": [],
             "elements": [{
-                "id": "24cf5dde",
+                "id": "148f4380",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "2e01bf9",
+                    "id": "7fcef764",
                     "settings": [],
                     "elements": [],
                     "isInner": false,
@@ -224,10 +221,10 @@
             "elType": "section"
         },
         {
-            "id": "77ef5d6e",
+            "id": "8d76cf5",
             "settings": [],
             "elements": [{
-                "id": "2bd59181",
+                "id": "6745351d",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
@@ -240,16 +237,16 @@
             "elType": "section"
         },
         {
-            "id": "3f0de7b4",
+            "id": "2ada7e61",
             "settings": [],
             "elements": [{
-                "id": "db84e7e",
+                "id": "794e7dbd",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "740eeb22",
+                    "id": "78aa006d",
                     "settings": {
                         "title": "\u00bfUn ni\u00f1o obeso es un ni\u00f1o sano?",
                         "align": "center",
@@ -275,18 +272,18 @@
             "elType": "section"
         },
         {
-            "id": "3f76f3d8",
+            "id": "2130f54d",
             "settings": {
                 "structure": "20"
             },
             "elements": [{
-                    "id": "138606d1",
+                    "id": "193ff284",
                     "settings": {
                         "_column_size": 50,
                         "_inline_size": null
                     },
                     "elements": [{
-                        "id": "1bf33fa7",
+                        "id": "1fbfcbd8",
                         "settings": {
                             "image": {
                                 "url": "https:\/\/medepmedicinadeportiva.com\/wp-content\/uploads\/2021\/04\/un-nino-obeso.png",
@@ -307,15 +304,15 @@
                     "elType": "column"
                 },
                 {
-                    "id": "4d069228",
+                    "id": "475136bf",
                     "settings": {
                         "_column_size": 50,
                         "_inline_size": null
                     },
                     "elements": [{
-                        "id": "5aef2433",
+                        "id": "847c38",
                         "settings": {
-                            "editor": "<p>Anteriormente nuestros abuelos pensaban que un ni\u00f1o sano era igual a un ni\u00f1o gordo y un ni\u00f1o delgado o \u201cflaco\u201d era sin\u00f3nimo de malnutrici\u00f3n o desnutrici\u00f3n.<\/p><p>Pero, \u00bfSabias que la obesidad en ni\u00f1os ha aumentado en todo el mundo? Esto es muy preocupante debido a que aumenta el riesgo de padecer muchas complicaciones incluyendo complicaciones relacionadas con el Covid-19. En \u00e9poca de pandemia por el SAR-COV- 2 los tiempos en desplazamientos activos, la actividad f\u00edsica y el deporte se han visto reducidos en los ni\u00f1os por causa de los confinamientos, lo que llevar\u00e1 en un futuro no muy lejano a mayor cantidad de ni\u00f1os con sobrepeso u obesidad y de la mano vendr\u00e1 un aumento en las enfermedades no trasmisibles (como hipertensi\u00f3n y diabetes).<\/p><p>Adem\u00e1s de las complicaciones cardiovasculares, pulmonares o musculoesquel\u00e9ticas, los ni\u00f1os obesos sufren de consecuencias psicosociales ya que muchas veces son rechazados, tratados como perezosos o sucios.<\/p><p>Es por ello, que resulta importante realizar una adecuada valoraci\u00f3n y seguimiento de estos ni\u00f1os, con un manejo multidisciplinario, ya que las causas de obesidad infantil resultan muy variadas: desde el balance energ\u00e9tico positivo, factores gen\u00e9ticos, h\u00e1bitos perinatales y de la vida temprana hasta estilos de vida caracterizados por falta de actividad f\u00edsica o inactividad excesiva.<\/p><p style=\"text-align: center;\"><strong><span style=\"color: #ff6600;\">\u00a1DEMOS EJEMPLO DE ALIMENTACI\u00d3N SALUDABLE Y DE ACTIVIDAD F\u00cdSICA!<\/span><\/strong><\/p>"
+                            "editor": "<p>Anteriormente nuestros abuelos pensaban que un ni\u00f1o sano era igual a un ni\u00f1o gordo y un ni\u00f1o delgado o \u201cflaco\u201d era sin\u00f3nimo de malnutrici\u00f3n o desnutrici\u00f3n.<\/p><p>Pero, \u00bfSabias que la obesidad en ni\u00f1os ha aumentado en todo el mundo? Esto es muy preocupante debido a que aumenta el riesgo de padecer muchas complicaciones incluyendo complicaciones relacionadas con el COVID-19. En \u00e9poca de pandemia por el SAR-COV-2 los tiempos en desplazamientos activos, la actividad f\u00edsica y el deporte se han visto reducidos en los ni\u00f1os por causa de los confinamientos, lo que llevar\u00e1 en un futuro no muy lejano a mayor cantidad de ni\u00f1os con sobrepeso u obesidad y de la mano vendr\u00e1 un aumento en las enfermedades no trasmisibles (como hipertensi\u00f3n y diabetes).<\/p><p>Adem\u00e1s de las complicaciones cardiovasculares, pulmonares o musculoesquel\u00e9ticas, los ni\u00f1os obesos sufren de consecuencias psicosociales ya que muchas veces son rechazados, tratados como perezosos o sucios.<\/p><p>Es por ello, que resulta importante realizar una adecuada valoraci\u00f3n y seguimiento de estos ni\u00f1os, con un manejo multidisciplinario, ya que las causas de obesidad infantil resultan muy variadas: desde el balance energ\u00e9tico positivo, factores gen\u00e9ticos, h\u00e1bitos perinatales y de la vida temprana hasta estilos de vida caracterizados por falta de actividad f\u00edsica o inactividad excesiva.<\/p><p style=\"text-align: center;\" align=\"center\"><strong><span style=\"color: #ff6600;\">\u00a1DEMOS EJEMPLO DE ALIMENTACI\u00d3N SALUDABLE Y DE ACTIVIDAD F\u00cdSICA!<\/span><\/strong><\/p>"
                         },
                         "elements": [],
                         "isInner": false,
@@ -330,16 +327,16 @@
             "elType": "section"
         },
         {
-            "id": "199abe13",
+            "id": "6b78c4d3",
             "settings": [],
             "elements": [{
-                "id": "70620fa4",
+                "id": "6d33a50e",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "1b185854",
+                    "id": "787d39dd",
                     "settings": [],
                     "elements": [],
                     "isInner": false,
@@ -353,16 +350,16 @@
             "elType": "section"
         },
         {
-            "id": "56a93cea",
+            "id": "642a598e",
             "settings": [],
             "elements": [{
-                "id": "11d269c9",
+                "id": "14acaa30",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "1b292e7f",
+                    "id": "21cc2e25",
                     "settings": [],
                     "elements": [],
                     "isInner": false,
@@ -376,16 +373,16 @@
             "elType": "section"
         },
         {
-            "id": "3c66898a",
+            "id": "4bb3704d",
             "settings": [],
             "elements": [{
-                "id": "7766063d",
+                "id": "702f0bcf",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "127debe",
+                    "id": "30709f32",
                     "settings": {
                         "title": "8 tips para montar bici con los ni\u00f1os",
                         "align": "center",
@@ -411,16 +408,16 @@
             "elType": "section"
         },
         {
-            "id": "477982ce",
+            "id": "4b3ffce6",
             "settings": [],
             "elements": [{
-                "id": "77af7f13",
+                "id": "614bb2b0",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                        "id": "79a0efc2",
+                        "id": "27b3c69c",
                         "settings": {
                             "image": {
                                 "url": "https:\/\/medepmedicinadeportiva.com\/wp-content\/uploads\/2021\/04\/bici.png",
@@ -438,7 +435,7 @@
                         "elType": "widget"
                     },
                     {
-                        "id": "14d71184",
+                        "id": "46d762f5",
                         "settings": {
                             "editor": "<p>Te has preguntado alguna vez si \u00bfes seguro salir a montar bici con los peque\u00f1os de casa?, esta es una excelente opci\u00f3n para hacer algo de ejercicio y compartir, sin embargo, siempre verifica que sea seguro para todos, una forma es realizando una lista de chequeo antes de salir a rodar, aqu\u00ed te dejamos algunos tips.<\/p><p>Ah! Y adem\u00e1s de hacer las revisiones t\u00e9cnicas de la bicicleta, siempre que se requiera recuerda llevarlos a valoraci\u00f3n con t\u00fa m\u00e9dico del deporte de confianza y de esta manera reducir los riesgos, sobre todo en aquellos ni\u00f1os con alguna condici\u00f3n cr\u00f3nica importante.<\/p><p>Ahora s\u00ed! Estos son algunos tips:<\/p><p>1.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Adquiere la bici adecuada para el tama\u00f1o del ni\u00f1o.<\/p><p>2.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Aseg\u00farate que lleven un casco adecuado, que se ajuste correctamente y que cumpla con los requisitos de seguridad, as\u00ed como tambi\u00e9n rodilleras, protectores para los codos.<\/p><p>3.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Verifica que la bota del pantal\u00f3n no quede suelta y corra riesgo de enredarse con la cadena.<\/p><p>4.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Coloca siempre luces y cintas reflectantes para que sea siempre visible en la v\u00eda.<\/p><p>5.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Ponle zapatos deportivos que se ajusten a los pedales y por su puesto a su pie, evita zapatos anchos, zapatos con tacones por m\u00e1s bajos que seas y mucho m\u00e1s montar bici descalzo.<\/p><p>6.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Ens\u00e9\u00f1ale las se\u00f1ales de tr\u00e1nsito, a detenerse ante un sem\u00e1foro o intersecci\u00f3n y otras reglas como dar paso a los peatones.<\/p><p>7.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Mant\u00e9nlo hidratado y come bien antes de empezar a rodar.<\/p><p>8.<span style=\"font-style: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: 'Times New Roman';\">\u00a0\u00a0\u00a0\u00a0 <\/span>Sobre todo! Disfruten del viaje y aprendan cosas nuevas.<\/p>"
                         },
@@ -455,16 +452,16 @@
             "elType": "section"
         },
         {
-            "id": "1bf27040",
+            "id": "20be110c",
             "settings": [],
             "elements": [{
-                "id": "2a1d908e",
+                "id": "6568b37a",
                 "settings": {
                     "_column_size": 100,
                     "_inline_size": null
                 },
                 "elements": [{
-                    "id": "793d3a9d",
+                    "id": "fa039bd",
                     "settings": [],
                     "elements": [],
                     "isInner": false,
@@ -477,5 +474,9 @@
             "isInner": false,
             "elType": "section"
         }
-    ]
+    ],
+    "page_settings": [],
+    "version": "0.4",
+    "title": "Blog definitivo",
+    "type": "page"
 }

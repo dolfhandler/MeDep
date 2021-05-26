@@ -1,3 +1,4 @@
+let COLUMN_COUNT_BOOTSTRAP = 12;
 let flag = 0;
 let element = '';
 let blog = "";
@@ -66,7 +67,7 @@ function loadView(options) {
         contentSpace.addClass("mt-4");
 
         for (let content of blog.content) {
-            contentSpace.append(`<section id="${content.id}" style="padding: 5px;  width: 100%; display: flex; flex-direction: row;" ></section>`)
+            contentSpace.append(`<div class="container-fluid mb-3"> <div id="${content.id}" class="row"></div> </div>`)
             builtBlogHTML(content);
         }
 
@@ -154,7 +155,7 @@ function builtBlogHTML(_blog) {
                 drawColum(content, parentID);
                 break;
             case 'section':
-                drawColum(content, parentID);
+                drawSection(content, parentID);
                 break;
             case "widget":
                 drawWidget(content, parentID);
@@ -170,8 +171,20 @@ function builtBlogHTML(_blog) {
 function drawColum(content, parentID) {
     const parentElement = $(`#${parentID}`);
 
-    // border: 1px solid #900;
-    $(parentElement).append(`<div id="${content.id}" style="padding: 5px; width: ${content.settings._column_size}%;"></div>`);
+    const col = content.settings._column_size * COLUMN_COUNT_BOOTSTRAP / 100;
+
+    $(parentElement).append(`
+    <div id="${content.id}" class="col-md-${col} col-xs-12"></div>
+    `);
+    // $(parentElement).append(`<div id="${content.id}" style="padding: 5px; width: ${content.settings._column_size}%;"></div>`);
+}
+
+function drawSection(content, parentID) {
+    const parentElement = $(`#${parentID}`);
+
+    $(parentElement).append(`
+    <div class="container-fluid mb-3"> <div id="${content.id}" class="row"></div> </div>
+    `);
 }
 
 async function drawWidget(content, parentID) {
@@ -209,35 +222,42 @@ async function drawWidget(content, parentID) {
             break;
         case "image":
             if (content.settings.image !== undefined)
-                $(parentElement).append(`<div style="text-align: center;">
-            <img src="${ChangeURL(content.settings.image.url)}" alt="" 
-            width="${content.settings.image_custom_dimension.width}"
-            height="${content.settings.image_custom_dimension.height}">
-            </div>`);
+                $(parentElement).append(`
+                <div style="text-align: center;">
+                    <figure class="figure" style="width: auto;">
+                        <img src="${ChangeURL(content.settings.image.url)}" class="figure-img img-fluid rounded" alt="">
+                    </figure>
+                </div>`);
             break;
         case "image-box":
             if (content.settings.image !== undefined) {
                 const url = ChangeURL(content.settings.image.url);
-                $(parentElement).append(`<div style="text-align: center;">
-                <img src="${url}" alt="" width="300" height="220">
-                <h1>${content.settings.title_text}</h1>
-                <p>${content.settings.description_text}</p>
+                $(parentElement).append(`
+                <div style="text-align: center;">
+                    <figure class="figure" style="width: auto;">
+                        <img src="${url}" class="figure-img img-fluid rounded" alt="">
+                    </figure>
+
+                    <h1>${content.settings.title_text}</h1>
+                    <p>${content.settings.description_text}</p>
                 </div>`);
             }
             break;
         case "image-carousel":
             let innerCarousel = '';
+            let innerIndicator = '';
             let flag = 0;
 
-            for (const image of content.settings.carousel) {
+            for (const [index, image] of content.settings.carousel.entries()) {
                 url = ChangeURL(image.url);
 
-                // <div  style="background: url('${url}') no-repeat center center/cover;  width:100%; height:800px; margin: auto;"></div>
+                innerIndicator += `<li data-target="#carouselBlog" data-slide-to="${index}" class="${flag===0?'active':''}"></li>`
+
                 innerCarousel += `
                 <div class="carousel-item ${flag===0?'active':''}">
-                <div class="d-block w-100">
-                <div  style="background: url('${url}') no-repeat top left / 100% 100%;  width:100%; height:650px; margin: auto;"></div>
-                </div>
+                    <div class="d-block w-100">
+                        <img class="d-block w-100" src="${url}" alt="First slide">
+                    </div>
                 </div>`;
 
                 if (flag === 0) {
@@ -248,17 +268,18 @@ async function drawWidget(content, parentID) {
             $(parentElement).append(`<div style="text-align: center;">
             
             <div id="carouselBlog" class="carousel slide mb-4" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    ${innerIndicator}
+                </ol>
                 <div class="carousel-inner">
-                    
-                        ${innerCarousel}
-                    
+                    ${innerCarousel}
                 </div>
                 <a class="carousel-control-prev" href="#carouselBlog" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <i class="fas fa-angle-left fa-4x text-dark" aria-hidden="true"></i>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselBlog" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <i class="fas fa-angle-right fa-4x text-dark" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
